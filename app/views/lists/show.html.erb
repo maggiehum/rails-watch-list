@@ -6,11 +6,16 @@
   <ul>
     <% @list.movies.each do |movie|%>
     <li><%= movie.title %></li>
+    <li><%= movie.overview %></li>
+    <li><%= "Rating: #{movie.rating}" %></li>
+    <% bookmark = Bookmark.find_by (:movie_id == :list_id) %>
+    <%= link_to 'Delete this bookmark', bookmark_path(bookmark),
+        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
     <% end %>
   </ul>
 </div>
 
-<div>
+<div class="p-3">
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <%= f.input :comment %>
     <%= f.association :movie %>
