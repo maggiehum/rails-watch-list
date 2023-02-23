@@ -8,7 +8,7 @@
     <li><%= movie.title %></li>
     <li><%= movie.overview %></li>
     <li><%= "Rating: #{movie.rating}" %></li>
-    <% bookmark = Bookmark.find_by (:movie_id == :list_id) %>
+    <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
     <%= link_to 'Delete this bookmark', bookmark_path(bookmark),
         data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
     <% end %>
