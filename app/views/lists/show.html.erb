@@ -4,18 +4,28 @@
   </div>
 </div>
 
-<div>
+
+<div class="cards">
   <ul>
     <% @list.movies.each do |movie|%>
-    <li><%= movie.title %></li>
-    <li><%= movie.overview %></li>
-    <li><%= "Rating: #{movie.rating}" %></li>
-    <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
-    <%= link_to 'Delete this bookmark', bookmark_path(bookmark),
-        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= movie.title %></h2>
+            <p><%= movie.overview %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= "Rating: #{movie.rating}" %></h2>
+          <h3><% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+          <%= link_to 'Delete', bookmark_path(bookmark),
+          data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></h3>
+        </div>
+      </div>
     <% end %>
   </ul>
 </div>
+
+
 
 <div class="p-3">
   <%= simple_form_for [@list, @bookmark] do |f| %>
