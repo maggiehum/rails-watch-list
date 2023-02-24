@@ -1,10 +1,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1534684686641-05569203ecca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmlsbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60);">
-  <div class="container">
+  <div class="container d-flex justify-content-center">
     <h1>Add a new category</h1>
   </div>
 </div>
 
-<%= simple_form_for (@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit 'Submit this new category' %>
-<% end %>
+<div class='p-3'>
+  <%= simple_form_for (@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :image, as: :file %>
+    <%= f.submit 'Submit this new category', class: 'btn btn-primary' %>
+  <% end %>
+</div>
